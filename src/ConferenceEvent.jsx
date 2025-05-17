@@ -41,7 +41,7 @@ const ConferenceEvent = () => {
 
     const handleMealSelection = (index) => {
        const item = mealsItems[index];
-       if(item.selected && item.type === "mealForPeople") {
+       if(item.selected) {
         const newNumberOfPeople = item.selected ? numberOfPeople : 0;
         dispatch(toggleMealSelection(index, newNumberOfPeople));
        }
@@ -51,6 +51,7 @@ const ConferenceEvent = () => {
     };
 
     const getItemsFromTotalCost = () => {
+        console.log("getItemsFromTotalCost");
         const items = [];
         venueItems.forEach((item) => {
             if(item.quantity > 0) {
@@ -78,7 +79,7 @@ const ConferenceEvent = () => {
     const items = getItemsFromTotalCost();
 
     const ItemsDisplay = ({ items }) => {
-        console.log(items);
+        console.log("ITEMS", items);
         return <>
             <div className="display_box1">
                 {items.length === 0 && <p>No items selected</p>}
